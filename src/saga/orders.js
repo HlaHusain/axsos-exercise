@@ -1,5 +1,5 @@
 import { call, put, takeLatest } from "redux-saga/effects";
-import { fetch, fetched } from "../reducers/orders";
+import { failed, fetch, fetched } from "../reducers/orders";
 import axios from "axios";
 function* doFetch() {
   try {
@@ -7,10 +7,9 @@ function* doFetch() {
     // @todo use enviroment variable for url
     const response = yield axios.get("/api/orders");
 
-    
-    yield put(fetched(response.data[""]))
+    yield put(fetched(response.data[""]));
   } catch (error) {
-    // log errors
+    yield put(failed());
   }
 }
 export default function* rootSaga() {

@@ -5,6 +5,7 @@ const initialState = {
   filteredData: [],
   isFetching: false,
   selectedSeller: null,
+  isFailed: false,
 };
 
 const slice = createSlice({
@@ -20,6 +21,10 @@ const slice = createSlice({
       state.data = action.payload;
       state.filteredData = state.data;
     },
+    failed(state) {
+      state.isFailed = true;
+      state.isFetching = false;
+    },
 
     filterBySeller(state, action) {
       state.selectedSeller = action.payload;
@@ -34,7 +39,7 @@ const slice = createSlice({
   },
 });
 
-export const { fetch, fetched, filterBySeller } = slice.actions;
+export const { fetch, fetched, filterBySeller, failed } = slice.actions;
 export default slice.reducer;
 
 export const selectUniqueSellers = (state) => {
@@ -47,3 +52,5 @@ export const selectUniqueSellers = (state) => {
 };
 export const selectData = (state) => state.orders.filteredData;
 export const selectedSelectedSeller = (state) => state.orders.selectedSeller;
+export const selectIsFetching = (state) => state.orders.isFetching;
+export const selectIsFailed = (state) => state.orders.isFailed;
