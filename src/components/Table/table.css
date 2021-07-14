@@ -1,0 +1,26 @@
+table {
+  width: 100%;
+}
+
+.table {
+  overflow-x: auto;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 15px 10px
+}
+thead tr {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+tbody tr td {
+  border-bottom: 1px solid #F3F4F6;
+  color:#6B7280;
+  font-weight: 500;
+}
+
+thead th {
+  padding: 20px 10px;
+  font-weight: 400;
+}
